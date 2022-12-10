@@ -1,0 +1,203 @@
+:root {
+  --rich-black: black;
+  --burlywood: #7effb2;
+  --light-black: rgb(58, 58, 58);
+  font-size: 62.5%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700,300");
+
+body {
+  background-color: var(--rich-black);
+  overflow: hidden;
+}
+
+.loading {
+  background-color: black;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s;
+}
+
+.pre-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40rem;
+  height: 40rem;
+  margin-top: -20rem;
+  margin-left: -20rem;
+  border-radius: 0.2rem;
+  box-shadow: 0.4rem 0.8rem 1.6rem 0 hsla(0, 0%, 0%, 0.1);
+  overflow: hidden;
+  background-color: var(--rich-black);
+  color: hsl(0, 0%, 20%);
+  font-family: "Inter", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+}
+
+.center {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: var(--burlywood);
+  z-index: 1;
+  animation: circle-shrink 2s ease-in-out forwards;
+}
+
+.lines {
+  display: flex;
+  justify-content: center;
+  width: 26rem;
+}
+
+.line {
+  width: 0;
+  height: 0.3rem;
+  background-color: var(--burlywood);
+  z-index: 1;
+  animation: line-grow 2s 2.2s linear forwards;
+}
+
+.text-main {
+  position: absolute;
+  color: var(--burlywood);
+  text-transform: uppercase;
+  font-size: 5.4rem;
+  display: flex;
+  justify-content: center;
+  padding-inline: 1.2rem;
+  animation: reveal-border 0.5s 4.2s linear forwards;
+}
+
+.text-main::after,
+.text-main::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-color: var(--rich-black);
+  animation: reveal-text 2s 4s linear forwards;
+}
+
+.text-main::after {
+  top: 0;
+}
+
+.text-main::before {
+  bottom: 0;
+}
+
+.text-top,
+.text-bottom {
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: var(--burlywood);
+  opacity: 0;
+}
+
+.text-top {
+  top: 14rem;
+  left: 6rem;
+  animation: reveal-to-right 2s 4.4s ease-in-out forwards;
+}
+
+.text-bottom {
+  bottom: 14rem;
+  right: 6rem;
+  animation: reveal-to-left 2s 4.4s ease-in-out forwards;
+}
+
+@keyframes circle-shrink {
+  0% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.3;
+  }
+
+  100% {
+    scale: 0;
+  }
+}
+
+@keyframes line-grow {
+  0% {
+    opacity: 1;
+    width: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+    width: 25%;
+  }
+
+  100% {
+    opacity: 0;
+    width: 50%;
+  }
+}
+
+@keyframes reveal-text {
+  0% {
+    height: 50%;
+  }
+
+  100% {
+    height: 0;
+  }
+}
+
+@keyframes reveal-border {
+  0% {
+    box-shadow: none;
+  }
+
+  100% {
+    box-shadow: 0.3rem 0 0 0 var(--burlywood), -0.3rem 0 0 0 var(--burlywood);
+  }
+}
+
+@keyframes reveal-to-right {
+  0% {
+    opacity: 0;
+    left: 6rem;
+  }
+
+  100% {
+    opacity: 1;
+    left: 9.8rem;
+  }
+}
+
+@keyframes reveal-to-left {
+  0% {
+    opacity: 0;
+    right: 6rem;
+  }
+
+  100% {
+    opacity: 1;
+    right: 9.8rem;
+  }
+}
